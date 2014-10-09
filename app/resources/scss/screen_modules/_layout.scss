@@ -1,0 +1,20 @@
+/* LAYOUT */
+
+#container {
+
+  @include container($desktop);
+
+  header.main {
+
+  }
+
+  div.main,
+  section.main,
+  article.main {
+
+  }
+
+  footer.main {
+
+  }
+}

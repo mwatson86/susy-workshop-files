@@ -1,0 +1,95 @@
+/* GENERIC */
+
+/* HELPERS */
+%clear_both {
+	
+	&:after {
+		content:"";
+		display:block;
+		clear:both;
+	}
+}
+
+/* MODULES */
+.module {
+	margin-bottom:20px;
+
+	.components {
+		margin-bottom:20px;
+		width:100%;
+
+		@extend %clear_both; 
+
+		&:last-child {
+			margin-bottom:0; 
+		}
+	}
+
+	&.grid-override {
+		width:100%;
+
+		@extend %clear_both;
+
+		.component {
+			margin-bottom:20px;
+			width:100%;
+
+			@include breakpoint(($tablet-portrait + 1), '.lt-ie9') {
+
+				@include with-layout(5 1/12 fluid) {
+
+					@include span(1 of 5);
+
+					&:first-child + .component + .component + .component + .component {
+						@include last;
+					}
+				}
+			}
+
+			.grid-override--media {
+				background-color:#000;
+				height:200px;
+			}
+
+			.grid-override--content {
+				background-color:#FF0000;
+				height:100px;
+			}
+		}
+	}
+
+	&.hw-split {
+		width:100%;
+
+		@extend %clear_both;
+
+		.component {
+			margin-bottom:20px;
+			width:100%;
+
+			&:first-child + .component {
+				margin-bottom:0;
+			}
+
+			@include breakpoint(($tablet-portrait + 1), '.lt-ie9') {
+				margin-bottom:0;
+
+				@include span(6 of 12);
+
+				&:first-child + .component {
+					@include last;
+				}
+			}
+
+			.hw-split--media {
+				background-color:#000;
+				height:200px;
+			}
+
+			.hw-split--content {
+				background-color:#FF0000;
+				height:100px;
+			}
+		}
+	}
+}
